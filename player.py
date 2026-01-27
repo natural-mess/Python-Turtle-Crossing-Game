@@ -14,9 +14,12 @@ class Player(Turtle):
     def _create_player(self):
         """Initialize player"""
         self.penup()
-        self.goto((STARTING_POSITION))
+        self.start_position()
         self.setheading(90)
 
     def move(self):
         """Move player forward"""
         self.forward(MOVE_DISTANCE)
+
+    def start_position(self):
+        self.goto((STARTING_POSITION))
