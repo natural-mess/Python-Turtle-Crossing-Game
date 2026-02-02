@@ -22,4 +22,5 @@ class Player(Turtle):
         self.forward(MOVE_DISTANCE)
 
     def start_position(self):
+        """When a level is completed, move the turtle back to starting position"""
         self.goto((STARTING_POSITION))

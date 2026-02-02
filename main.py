@@ -58,8 +58,9 @@ while game_is_on:
     if car_player_collision_check(car, player):
         quit_game()
 
+    # If a level is completed
     if player.ycor() >= 280:
-        scoreboard.increase_score()
+        scoreboard.increase_level()
         player.start_position()
         car.car_reset_level()
 

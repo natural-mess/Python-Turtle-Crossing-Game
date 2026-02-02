@@ -21,35 +21,41 @@ class Scoreboard(Turtle):
         self.game_control()
     
     def update_scoreboard(self):
+        """Show current level and highest level"""
         self.goto(-290,260)
         self.check_highest_level()
-        self.write(f"Score: {self.level} / (Highest: {self.highest_level})", move=False, align=ALIGNMENT,  font=FONT_LEVEL)
+        self.write(f"Level: {self.level} / (Highest: {self.highest_level})", move=False, align=ALIGNMENT,  font=FONT_LEVEL)
 
-    def increase_score(self):
+    def increase_level(self):
+        """Increase a level by 1"""
         self.level += 1
         self.clear()
         self.update_scoreboard()
         self.game_control()
 
     def game_control(self):
+        """Show instruction for game control"""
         self.goto(-290, -270)
         self.write(f"q: quit", move=False, align=ALIGNMENT,  font=FONT_CONTROL)
         self.goto(-290, -290)
         self.write(f"space: pause / resume", move=False, align=ALIGNMENT,  font=FONT_CONTROL)
 
     def game_pause(self):
+        """Show pause"""
         self.clear()
         self.goto(0, 0)
         self.color("red")
         self.write(f"PAUSE", move=False, align="center",  font=FONT_INFO)
 
     def game_resume(self):
+        """After resuming from pause, show information again"""
         self.clear()
         self.color("green")
         self.update_scoreboard()
         self.game_control()
 
     def game_over(self):
+        """Show gameover message"""
         self.goto(0, 0)
         self.color("red")
         self.write(f"GAME OVER", move=False, align="center",  font=FONT_INFO)
@@ -58,6 +64,7 @@ class Scoreboard(Turtle):
         self.write(f"(Click on the game window to exit)", move=False, align="center",  font=FONT_CONTROL)
 
     def check_highest_level(self):
+        """Write highest level to file"""
         if self.level > self.highest_level:
             self.highest_level = self.level
             with open(FILE_PATH, "w") as file:
